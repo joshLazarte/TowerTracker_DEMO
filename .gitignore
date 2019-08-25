@@ -1,0 +1,7 @@
+node_modules/
+.env
+public/js/mapView/src/ENV_VAR.js
+public/js/mapView/dist/app.bundle.js
+public/js/dashboard/dist/app.bundle.js
+npm-debug.log
+public/js/mapView/unit_tests/

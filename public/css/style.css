@@ -1,0 +1,41 @@
+#map {
+  height: 85vh;
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 0 0.4rem 0.6rem rgba(0, 0, 0, 0.3);
+}
+
+#queueList,
+#areaValue,
+#accountNumberValue,
+#assignedTechValue,
+#lastServiceTechValue,
+#carrierValue,
+#toggleEditMode,
+#CLLIValue,
+#CIDValue,
+#add-market-content,
+#add-tech-content,
+#saved-areas-header {
+  display: none;
+}
+
+.logo-image {
+  background-image: url("../icons/white_tower.png");
+  background-size: cover;
+  height: 2.5rem;
+  width: 2rem;
+  display: inline-block;
+}
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+#spinner-container {
+  display: none;
+}

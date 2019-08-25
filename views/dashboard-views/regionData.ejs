@@ -1,0 +1,89 @@
+<div class="container">
+  <h1 class="text-center my-5">Region Data</h1>
+  <div class="row mb-5">
+    <% markets.forEach(market => { %>
+      <% const marketTechs = techs.filter(tech => tech.market.toString() === market._id.toString()) %>
+      <div class="col-md-4 mb-3">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="text-center"><%= market.name %> Market</h4>            
+          </div>
+          <div class="card-body">
+           <h5 class="mb-3">
+              <%= market.areas.length %> <% if(market.areas.length === 1) { %>
+                Area
+              <% } else { %>
+                Areas
+              <% } %>
+              <button 
+              id="area-expand-button-<%= market._id %>"
+              class="btn btn-sm btn-primary float-right expand-button"
+              data-toggle="collapse" 
+              data-target="#collapseAreas-<%= market._id %>"
+              >
+                Expand
+            </button>
+           </h5>             
+            <ul class="list-group collapse mt-4" id="collapseAreas-<%= market._id %>">             
+              <% market.areas.forEach(area => { %>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <%= area.name %>
+                  <i 
+                  id="area-arrow-<%= area._id %>"
+                  class="fas fa-angle-down area-arrow"
+                  style="font-size: 1.5rem; cursor: pointer;"
+                  data-toggle="collapse"
+                  data-target="#collapseCities-<%= area._id %>"
+                  ></i>
+                </li>
+                <li class="list-group-item collapse" id="collapseCities-<%= area._id %>">
+                  <ul class="list-group">
+                    <% area.cities.forEach(city => { %>
+                      <li class="list-group-item">
+                        <%= city.name %>
+                      </li>
+                    <% }) %>
+                  </ul>
+                </li>
+              <% }) %>              
+              <a href="#" 
+              class="list-group-item list-group-item-action active text-center edit-market-button"
+              data-market="<%= JSON.stringify(market) %>">
+                  Edit Market
+                </a>
+            </ul>  
+
+            <hr>
+
+            <h5 class="mb-3">
+              <%= marketTechs.length %> 
+              <% if(marketTechs.length === 1) { %>
+                Tech
+              <% } else { %>
+                Techs
+              <% } %>
+              <button
+              id="tech-expand-button-<%= market._id %>"
+              class="btn btn-sm btn-primary float-right expand-button"
+              data-toggle="collapse"
+              data-target="#collapseTechs-<%= market._id %>"
+              >
+                Expand
+              </button>
+            </h5>     
+            
+            <ul class="list-group collapse mt-4" id="collapseTechs-<%= market._id %>">
+              <% marketTechs.forEach(tech => { %>  
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <%= tech.techNumber %>: <%= tech.firstName %> <%= tech.lastName %>
+                  <span style="font-size: 1.2rem; cursor: pointer; padding: 8px 9px 10px 12px;" data-tech="<%= JSON.stringify(tech) %>" class="badge badge-primary edit-tech-button"><i data-tech="<%= JSON.stringify(tech) %>" class="fas fa-user-edit"></i></span>
+                </li>
+              <% }) %>
+            </ul>          
+          </div>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+

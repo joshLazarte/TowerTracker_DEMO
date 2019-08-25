@@ -1,0 +1,97 @@
+<div class="row my-5">
+  <div class="col-lg-8 col-md-12 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h3 id="market-form-header">Add Market</h3>
+      </div>
+      <div id="market-alert" class="mt-2 mx-2"></div>
+      <div class="card-body">
+        <form action="setup/market" method="POST">
+          <input type="hidden" name="market[_id]" id="hidden-id" value="">
+          <div class="form-group">
+            <label for="market[name]">Market Name</label>
+            <input type="text" id="market-name" class="form-control" placeholder="Market Name" name="market[name]" required />
+          </div>
+          <hr />
+
+          <div id="add-area-form-section">
+
+            <h5>Add Area</h5>
+
+            <span id="area_fields">
+              <span id="area-group-0">
+                <div class="form-group">                  
+                  <label for="area[name]">Name:</label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Area Name"
+                    id="area-name-0"
+                    name="market[areas][0][name]"
+                  />
+                </div>
+                <label for="market[areas][0][cities]">Cities:</label>
+                <span id="area-0-cities-section">
+                  <div class="form-row mb-3">
+                    <div class="col-4">
+                      <input
+                      class="form-control"
+                      id="area-0-city-0"
+                      name="market[areas][0][cities][0]"
+                      placeholder="City"
+                      >
+                    </div>  
+                    <div class="col-4">
+                      <input
+                      class="form-control"
+                      id="area-0-city-1"
+                      name="market[areas][0][cities][1]"
+                      placeholder="City"
+                      >
+                    </div>
+                    <div class="col-4">
+                      <input
+                      class="form-control"
+                      id="area-0-city-2"
+                      name="market[areas][0][cities][2]"
+                      placeholder="City"
+                      >
+                    </div>
+                  </div>
+                </span>
+            <button id="area-0-add-cities" class="btn btn-sm btn-primary" type="button" id="addMoreCities">
+                  Add More Cities
+                </button>
+            </span>
+            </span>
+
+            <hr>
+            <button class="btn btn-block btn-primary" type="button" id="addArea">
+              Save Area
+            </button>
+            <hr />
+          </div>
+
+
+          <button type="button" style="display: none;" class="btn btn-primary display-in-edit-state" id="edit-state-add-area-button">Add Area</button>
+          <hr style="display: none;" class="display-in-edit-state">
+
+          <div id="saved-areas-header">
+            <div class="d-flex justify-content-between align-items-end">
+              <h5>Saved Areas (<span id="saved-area-count"></span>)</h5>
+              <button type="button" class="btn btn-small btn-primary" id="toggle-saved-area-display">See All</button>
+            </div>
+            <hr>
+          </div>
+
+          <div id="saved-areas" style="visibility: hidden; height: 0;" class="mb-3"></div>
+          <button type="button" style="display: none;" id="cancel-edit-market-button" class="btn btn-danger btn-block">Cancel</button>
+          <button type="button" id="toggle-completion-button" class="btn btn-success btn-block">Done</button>
+
+
+          <input style="display: none;" id="add-market-submit" type="submit" value="Submit" class="btn btn-block btn-success" />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

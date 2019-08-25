@@ -1,0 +1,175 @@
+<!-- Filter Towers Modal -->
+<div
+  class="modal fade"
+  id="filterTowersModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="filterTowersModal"
+  aria-hidden="true"
+  data-backdrop="static"
+  data-keyboard="false"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Filter Towers</h5>
+        <button
+          id="cancelFilterButtonSmall"
+          type="button"
+          class="close"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div id="filter-form-alert"></div>
+        <form class="py-3">
+          <div class="form-group">
+            <label for="searchKey">Filter By:</label>
+            <select class="form-control" name="searchKey" id="searchKey">
+              <option selected value="">All</option>
+              <option value="area">Area</option>
+              <option value="CLLI">CLLI</option>
+              <option value="CID">CID</option>
+              <option value="accountNumber">Account Number</option>
+              <option value="assignedTech">Assigned Tech</option>
+              <option value="lastServiceTech">Last Service Tech</option>
+              <option value="carrier">Carrier</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select class="form-control" name="areaValue" id="areaValue">
+              <option disabled selected value="">Area</option>
+              <% markets.forEach(market => { %> <% market.areas.forEach(area =>
+              { %>
+              <option value="<%= area._id %>"><%= area.name %></option>
+              <% }) %> <% }) %>
+            </select>
+          </div>
+
+          <select class="form-control" name="carrierValue" id="carrierValue">
+            <option disabled selected value="">Choose One</option>
+            <option value="" disabled selected>Carrier</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+          </select>
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="CLLIValue"
+              id="CLLIValue"
+              placeholder="Enter CLLI"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="CIDValue"
+              id="CIDValue"
+              placeholder="Enter CID"
+            />
+          </div>
+          <div class="form-group">
+            <select
+              class="form-control"
+              name="assignedTechValue"
+              id="assignedTechValue"
+            >
+              <option disabled selected value="">Tech</option>
+              <% techs.forEach(tech => { %>
+              <option value="<%= tech._id %>"
+                ><%= tech.firstName %> - <%= tech.techNumber %></option
+              >
+              <% }) %>
+            </select>
+          </div>
+          <div class="form-group">
+            <select
+              class="form-control"
+              name="lastServiceTechValue"
+              id="lastServiceTechValue"
+            >
+              <option disabled selected value="">Tech</option>
+              <% techs.forEach(tech => { %>
+              <option value="<%= tech._id %>"
+                ><%= tech.firstName %> - <%= tech.techNumber %></option
+              >
+              <% }) %>
+            </select>
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="accountNumberValue"
+              id="accountNumberValue"
+              placeholder="Enter Account Number"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="lastServiceFilterValue">Last Service Date:</label>
+            <select
+              class="form-control"
+              name="lastServiceFilterValue"
+              id="lastServiceFilterValue"
+            >
+              <option selected value="ALL">All</option>
+              <option value="GOOD">Last 30 Days</option>
+              <option value="WARNING">31 - 90 Days</option>
+              <option value="BAD">+90 Days</option>
+            </select>
+          </div>
+          <% if(isAdmin) { %>
+          <div class="form-group">
+            <label for="marketFilterValue">Market</label>
+            <select
+              class="form-control"
+              name="marketFilterValue"
+              id="marketFilterValue"
+            >
+              <option selected value="ALL">All</option>
+              <% markets.forEach(market => { %>
+              <option value="<%= market._id %>"><%= market.name %></option>
+              <% }) %>
+            </select>
+          </div>
+          <% } %>
+          <div class="form-check mb-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              name="unrestricted"
+              id="unrestrictedValue"
+            />
+            <label class="form-check-label" for="unrestricted"
+              >Unrestricted Access</label
+            >
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="cancelFilterButton"
+              class="btn btn-danger"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              id="filterSubmitButton"
+              class="btn btn-primary"
+            >
+              Filter
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

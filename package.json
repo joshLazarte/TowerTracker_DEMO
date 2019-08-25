@@ -1,0 +1,42 @@
+{
+  "name": "cell_tower_finder",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "jest",
+    "watch:main": "webpack --watch --mode development --config-name main",
+    "build:main": "webpack --mode production --config-name main",
+    "watch:dashboard": "webpack --watch --mode development --config-name dashboard",
+    "build:dashboard": "webpack --mode production --config-name dashboard"
+  },
+  "author": "Josh Lazarte",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.3",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.4",
+    "dotenv": "^7.0.0",
+    "ejs": "^2.6.2",
+    "express": "^4.16.4",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.16.1",
+    "isomorphic-fetch": "^2.2.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.5.5",
+    "node-excel-export": "^1.4.4",
+    "nodemailer": "^6.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "babel-loader": "^8.0.5",
+    "eslint": "^6.0.1",
+    "jest": "^24.8.0",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  }
+}

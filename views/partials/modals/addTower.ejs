@@ -1,0 +1,219 @@
+<!-- Add/Edit Tower Modal -->
+<div
+  class="modal fade"
+  id="addTowerModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="addTowerModal"
+  aria-hidden="true"
+  data-backdrop="static"
+  data-keyboard="false"
+>
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">
+          <span id="modalTitle">Add Tower</span>
+          <a class="ml-3" href="#" id="toggleEditMode">Edit</a>
+        </h5>
+        <button
+          type="button"
+          id="closeTowerFormModalSmall"
+          class="close"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <small id="lastServiceInfo"></small>
+        <div id="tower-form-alert"></div>
+        <form class="py-3">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="addTowerAddress">Address</label>
+              <input
+                class="form-control"
+                type="text"
+                id="addTowerAddress"
+                placeholder="123 Main St"
+                required
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="addTowerCity">City</label>
+              <select class="form-control" id="addTowerCity" required>
+                <option disabled selected value="">City</option>
+                <% markets.forEach(market => { %>
+                  <% market.cities.forEach(city => { %>
+                    <option value="<%= city._id %>"><%= city.name %></option>
+                  <% }) %>
+                <% }) %>  
+              </select>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="addTowerAcctNum">Account Number</label>
+              <input
+                class="form-control"
+                type="text"
+                id="addTowerAcctNum"
+                placeholder="826018090..."
+                required
+              />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="addTowerLat">Lat</label>
+              <input
+                type="text"
+                class="form-control"
+                id="addTowerLat"
+                placeholder="Format: 27.000000"
+                required
+              />
+              <small class="form-text text-muted"
+                >Get Accurate Coordinates</small
+              >
+            </div>
+            <div class="form-group col-md-4">
+              <label for="addTowerLong">Long</label>
+              <input
+                type="text"
+                class="form-control"
+                id="addTowerLong"
+                placeholder="Format: -97.000000"
+                required
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="addTowerAssignedTech">Assigned Tech</label>
+              <select class="form-control" id="addTowerAssignedTech" required>
+                <option disabled selected value="">Tech</option>
+                <% techs.forEach(tech => { %>
+                  <option value="<%= tech._id %>"><%= tech.firstName %> - <%= tech.techNumber %></option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="addTowerCLLI">CLLI</label>
+              <input
+                type="text"
+                class="form-control"
+                id="addTowerCLLI"
+                placeholder="CRCHTX..."
+                required
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="addTowerCID">CID</label>
+              <input
+                type="text"
+                class="form-control"
+                id="addTowerCID"
+                placeholder="36.L1XX...."
+                required
+              />
+            </div>
+            <div class="form-group col-md-4">
+              <label for="addTowerCarrier">Carrier</label>
+              <select class="form-control" id="addTowerCarrier" required>
+                <option value="" disabled selected>Carrier</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="addTowerCabinetType">Cabinet Type</label>
+              <select class="form-control" id="addTowerCabinetType">
+                <option value="" disabled selected>Cabinet</option>
+                <option value="Westell Heat Exchanger"
+                  >Westell Heat Exchanger</option
+                >
+                <option value="DDB 62 inch Standalone"
+                  >DDB 62 inch Standalone</option
+                >
+                <option value="DDB 50 inch Standalone"
+                  >DDB 50 inch Standalone</option
+                >
+                <option value="DDB 39 inch H-Frame">DDB 39 inch H-Frame</option>
+                <option value="DDB 39 inch Shelter Mount"
+                  >DDB 39 inch Shelter Mount</option
+                >
+                <option value="Other (Alt-cabinet)">Other (Alt-cabinet)</option>
+                <option value="Indoor hut">Indoor hut</option>
+                <option value="Westell BXM1019-TWH3"
+                  >Westell BXM1019-TWH3</option
+                >
+                <option value="Alcatel SAS-M 3HE08055AA"
+                  >Alcatel SAS-M 3HE08055AA</option
+                >
+                <option
+                  value="New Cell location Tech needs to Validate cabinet type"
+                  >New Cell location Tech needs to Validate cabinet type</option
+                >
+                <option value="Fiberlight provided cabinet"
+                  >Fiberlight provided cabinet</option
+                >
+              </select>
+            </div>
+            <div class="form-group col-md-8">
+              <label for="addTowerComments">Comments</label>
+              <textarea
+                type="text"
+                class="form-control"
+                id="addTowerComments"
+                placeholder="Location Details, IP, Gate Code..."
+              ></textarea>
+            </div>
+          </div>
+          <% if(isAdmin) { %>
+          <div class="form-row">
+            <div class="form-group col-md-4">
+              <label for="addTowerMarket">Market</label>
+              <select class="form-control" id="addTowerMarket" required>
+                <option value="" disabled selected>Market</option>
+                <% markets.forEach(market => { %>
+                  <option value="<%= market._id %>"><%= market.name %></option>
+                <% }) %>
+              </select>
+            </div>
+          </div>
+          <% } %>
+
+          <div class="form-check mb-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              id="addTowerUnrestricted"
+              checked
+            />
+            <label class="form-check-label" for="addTowerUnrestricted"
+              >Unrestricted Access</label
+            >
+          </div>
+
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="closeTowerFormModal"
+              class="btn btn-danger"
+            >
+              Cancel
+            </button>
+            <button type="submit" id="addTowerSubmit" class="btn btn-primary">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

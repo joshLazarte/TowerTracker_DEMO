@@ -1,0 +1,57 @@
+<!-- Filter Towers Modal -->
+<div
+  class="modal fade"
+  id="adminTechSelectModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="adminTechSelectModal"
+  aria-hidden="true"
+  data-backdrop="static"
+  data-keyboard="false"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Select Tech</h5>
+        <button
+          id="cancelAdminTechSelectSmall"
+          type="button"
+          class="close"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div id="admin-tech-select-alert"></div>
+       <form>         
+         <div class="form-group">
+          <label for="adminTechSelect">Tech</label>
+          <select class="form-control" name="adminTechSelect" id="adminTechSelect">
+              <option value="" disabled selected>Tech</option>
+              <% techs.forEach(tech => { %>
+                <option value="<%= tech._id %>"><%= tech.firstName %> - <%= tech.techNumber %></option>
+              <% }) %>
+            </select>
+         </div>          
+         <div class="modal-footer">
+            <button
+              type="button"
+              id="cancelAdminTechSelect"
+              class="btn btn-danger"
+            >
+              Cancel
+            </button>
+            <button
+              type="submit"
+              id="adminSROSubmitButton"
+              class="btn btn-primary"
+            >
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

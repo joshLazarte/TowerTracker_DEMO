@@ -1,0 +1,53 @@
+<% include ./partials/header %> <% include ./partials/login-navbar %>
+<body>
+  <div class="d-flex flex-column container my-5">
+    <%- messages('message-template', locals) %>
+    <div class="col-lg-6 mx-auto col-md-12 my-5">
+      <div class="text-center">
+          <p>Welcome to the demo version of TowerTracker!</p>
+          <p>Please log in with the following credentials:</p>
+          <p>User Name: DEMO_ADMIN | Password: 123456</p>
+          <p>*Please note: all data is fake and generated randomly. No customer information is exposed</p>
+      </div>
+      
+      <div class="card my-5">
+        <div class="card-header">
+          <h1>Log In</h1>
+        </div>
+        <div class="card-body">
+          <form action="login" method="POST">
+            <div class="form-group">
+              <label for="userName">
+                User Name
+              </label>
+              <input
+                type="text"
+                name="userName"
+                placeholder="User Name"
+                class="form-control"
+              />
+            </div>
+            <div class="form-group">
+              <label for="userName">
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                placeholder="Password"
+                class="form-control"
+              />
+            </div>
+            <input
+              type="submit"
+              value="Log In"
+              class="btn btn-block btn-info"
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="flex-grow-1">&nbsp;</div>
+  </div>
+  <% include ./partials/home-footer %>
+</body>

@@ -1,0 +1,89 @@
+<div class="row my-5">
+  <div class="col-lg-8 col-md-12 mx-auto">
+    <div class="card">
+      <div class="card-header">
+        <h3 id="tech-form-title">Add Tech</h3>
+      </div>
+      <div class="card-body">
+        <form action="setup/tech" method="POST">
+          <div class="form-group">
+            <label for="first name">First Name</label>
+            <input
+              type="text"
+              id="tech-firstName"
+              name="tech[firstName]"
+              placeholder="First Name"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="last name">Last Name</label>
+            <input
+              type="text"
+              id="tech-lastName"
+              name="tech[lastName]"
+              placeholder="Last Name"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="PID">PID</label>
+            <input
+              type="text"
+              id="tech-PID"
+              name="tech[PID]"
+              placeholder="PID"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="tech-email"
+              name="tech[email]"
+              placeholder="Email"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="tech number">Tech Number</label>
+            <input
+              type="text"
+              id="tech-techNumber"
+              name="tech[techNumber]"
+              placeholder="Tech Number"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="market">Market</label>
+            <select class="form-control" name="tech[market]" id="tech-market" required>
+              <option disabled selected value="">Market</option>
+              <% markets.forEach(market => { %>
+              <option value="<%= market._id %>"><%= market.name %></option>
+              <% }) %>
+            </select>
+          </div>
+
+          <input type="hidden" name="tech[_id]" id="tech-_id" value="">
+
+          <button style="display: none;" type="button" class="btn btn-block btn-danger my-3" id="cancel-edit-tech-btn">
+            Cancel
+          </button>
+
+          <input
+            type="submit"
+            value="Submit"
+            class="btn btn-block btn-secondary"
+          />
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
